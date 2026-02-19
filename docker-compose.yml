@@ -1,0 +1,14 @@
+services:
+  gateway:
+    build: ./gateway
+    ports:
+      - "8080:8080"
+    depends_on:
+      - discovery-server
+    environment:
+      - EUREKA_URI=http://discovery-server:8761/eureka
+
+  discovery-server:
+    build: ./discovery-server
+    ports:
+      - "8761:8761"
